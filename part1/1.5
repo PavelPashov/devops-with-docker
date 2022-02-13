@@ -1,0 +1,7 @@
+REPOSITORY                                            TAG       IMAGE ID       CREATED         SIZE
+devopsdockeruh/simple-web-service                     ubuntu    4e3362e907d5   11 months ago   83MB
+devopsdockeruh/simple-web-service                     alpine    fd312adc88e0   11 months ago   15.7MB
+
+
+docker container run -d devopsdockeruh/simple-web-service:alpine
+docker exec frosty_colden tail -f '/usr/src/app/text.log'
