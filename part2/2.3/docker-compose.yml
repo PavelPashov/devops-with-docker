@@ -11,10 +11,29 @@ services:
     build: ./example-backend
     environment:
       - REDIS_HOST=redis
+    env_file:
+      - .env
     ports:
       - '8080:8080'
+    depends_on:
+      - redis
+      - db
 
   front-end:
     build: ./example-frontend
     ports:
       - '5000:5000'
+    depends_on:
+      - web
+
+  db:
+    image: postgres:15
+    container_name: db
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
